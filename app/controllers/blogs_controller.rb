@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs
   def index
-    @blogs = Blog.all.order("created_at DESC")
+    @blogs = Blog.all.page(params[:page]).per(5).order("created_at DESC")
 
     render json: @blogs
   end
